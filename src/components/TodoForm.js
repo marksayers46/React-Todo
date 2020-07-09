@@ -14,6 +14,16 @@ class TodoForm extends React.Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    if (this.state.task !== '') {
+      this.props.addItem(this.state.task);
+      this.setState({
+        task: ''
+      });
+    }
+  }
+
   render() {
     console.log('rendering form')
     return(
@@ -26,6 +36,7 @@ class TodoForm extends React.Component {
           value={this.state.task} 
           className='field'
           placeholder='Task' />
+          <button className='field'>Add to List</button>
         </form>
 
       </div>
