@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
+import TodoList from './ components/TodoList';
 
 const data = [
   {
@@ -9,9 +10,7 @@ const data = [
   }
 ]
 class App extends React.Component {
-  // You will need a place to store your state in this component.
-  // Design `App` to be the parent component of your application.
-  // This component is going to take care of state, and any change handlers you need to work with your state
+  
   constructor() {
     super();
     this.state = {
@@ -28,9 +27,14 @@ class App extends React.Component {
       <div clasName='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>
         <TodoForm />
+        <TodoList />
+
+        <button className='clearButton'>Clear Completed Task</button>
+        <button className='clearButton'>Restore List</button>
       </div>  
     );
   }
 }
 
 export default App;
+``
