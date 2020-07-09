@@ -47,6 +47,14 @@ class App extends React.Component {
       })
     })
   }
+
+  clearCompleted = (itemID) => {
+    this.state({
+      todo: this.state.todo.filter(item => {
+        return !item.completed
+      })
+    })
+  }
   
   render() {
     console.log('rendering...')
@@ -60,7 +68,7 @@ class App extends React.Component {
         clearCompleted={this.clearCompleted}
         />
 
-        <button className='clearButton'>Clear Completed Task</button>
+        <button className='clearButton' onClick={this.clearCompleted}>Clear Completed Task</button>
         <button className='clearButton'>Restore List</button>
       </div>  
     );
