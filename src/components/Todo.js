@@ -6,10 +6,9 @@ const Todo = () => {
 
   return(
     <div>
-      
+
     </div>
   )
 }
 
-
-export default TodoForm;
+export default Todo;
