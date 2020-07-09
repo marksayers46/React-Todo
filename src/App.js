@@ -80,12 +80,8 @@ class App extends React.Component {
     console.log('rendering...')
     return (
       <div className='App'>
-      
-
         <h1 className='title'>Welcome to your Todo App!</h1>        
-
         <TodoForm addItem={this.addItem}/> 
-
         <TodoList
         todo={this.state.todo}
         toggleCompleted={this.toggleCompleted}

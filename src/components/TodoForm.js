@@ -40,7 +40,7 @@ class TodoForm extends React.Component {
           />
           <button className='field'>Add to List</button>
         </form>
-        <p className='directions'>Click task to check completed</p>
+        <p className='directions'>Click the task to check completed:</p>
       </div>
     );
   }
