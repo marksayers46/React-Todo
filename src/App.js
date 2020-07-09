@@ -15,9 +15,7 @@ class App extends React.Component {
     super();
     this.state = {
       // add my state object
-      todo: data,
-      lastTodo: data,
-      searchText: ''
+      todo: data
     };
   };
   

@@ -1,6 +1,7 @@
 import React from 'react';
+import Todo from './components/Todo';
 
-const TodoList = props => {
+const TodoList = () => {
 
   return(
     <div className=' listCont'>
