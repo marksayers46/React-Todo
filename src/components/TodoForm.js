@@ -8,15 +8,22 @@ class TodoForm extends React.Component {
     }
   }
 
+  handleChanges = e => {
+    this.setState({
+      task: e.target.value
+    })
+  }
+
   render() {
     console.log('rendering form')
     return(
       <div className='form'>
-        <form>
-          <input 
+        <form onSubmit={this.handleSubmit}>
+          <input
+          onChange={this.handleChanges} 
           type='text' 
           name='item' 
-          value='task' 
+          value={this.state.task} 
           className='field'
           placeholder='Task' />
         </form>

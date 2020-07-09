@@ -18,13 +18,26 @@ class App extends React.Component {
       todo: data
     };
   };
+
+  addItem = task => {
+    this.setState({
+      todo: [
+        ...this.state.todo,
+        {
+          task: task,
+          id: Date.now(),
+          completed: false
+        }
+      ]
+    })
+  }
   
   render() {
     console.log('rendering...')
     return (
       <div clasName='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>
-        <TodoForm />
+        <TodoForm addItem={this.addItem}/>
         <TodoList />
 
         <button className='clearButton'>Clear Completed Task</button>
