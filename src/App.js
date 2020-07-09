@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TodoForm from './components/TodoForm';
 
 const data = [
   {
@@ -27,7 +27,7 @@ class App extends React.Component {
     return (
       <div clasName='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>
-      
+        <TodoForm />
       </div>  
     );
   }
