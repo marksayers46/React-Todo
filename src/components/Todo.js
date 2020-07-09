@@ -2,7 +2,7 @@ import React from 'react';
 import React from 'react';
 
 
-const Todo = props => {
+const Todo = () => {
 
   return(
     <div>
