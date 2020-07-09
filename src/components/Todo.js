@@ -8,12 +8,12 @@ const Todo = props => {
     }
 
     const handleClick = () => {
-        props.toggleCompleted(props.item.id);
+        props.toggleCompleted(props.item.id)
     };
 
     return(
-        <div onClick={handleClick}>
-            <p className={itemClassName}>{props.item.task} </p>
+        <div>
+            <p className={itemClassName} onClick={handleClick}>{props.item.task} </p>
         </div>
     )
 

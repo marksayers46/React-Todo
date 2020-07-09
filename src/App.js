@@ -17,13 +17,23 @@ class App extends React.Component {
     this.state = {
       // add my state object
       todo: data,
-      
+      lastTodo: data
     };
   };
 
   addItem = task => {
     this.setState({
       todo: [
+        ...this.state.todo,
+        {
+          task: task,
+          id: Date.now(),
+          completed: false
+        }
+      ]
+    })
+    this.setState({
+      lastTodo: [
         ...this.state.todo,
         {
           task: task,
@@ -54,25 +64,45 @@ class App extends React.Component {
         return !item.completed
       })
     })
+    this.state({
+      lastTodo: this.state.todo.filter(item => {
+        return !item.completed
+      })
+    })
+  }
+
+  handleRestoreSubmit = e => {
+    e.preventDefault();
+    this.setState({ todo: this.state.lastTodo})
   }
   
   render() {
     console.log('rendering...')
     return (
-      <div clasName='App'>
-        <h1 className='title'>Welcome to your Todo App!</h1>
-        <TodoForm addItem={this.addItem}/>
-        <TodoList 
-        todo={this.state.todo}
-        toggleCompleted={this.togleCompleted}
-        clearCompleted={this.clearCompleted}
-        />
+      <div className='App'>
+      
 
-        <button className='clearButton' onClick={this.clearCompleted}>Clear Completed Task</button>
-        <button className='clearButton'>Restore List</button>
-      </div>  
+        <h1 className='title'>Welcome to your Todo App!</h1>        
+
+        <TodoForm addItem={this.addItem}/> 
+
+        <TodoList
+        todo={this.state.todo}
+        toggleCompleted={this.toggleCompleted}
+        clearCompleted={this.clearCompleted}
+        />   
+
+        <button className='clearButton' onClick={this.clearCompleted}>
+          Clear Completed Task
+        </button>    
+
+        <button className='clearButton' onClick={this.handleRestoreSubmit}>
+          Restore List
+        </button>
+      </div>
     );
   }
 }
+
 
 export default App;

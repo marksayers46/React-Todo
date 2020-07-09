@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class TodoForm extends React.Component {
   constructor() {
     super();
@@ -35,7 +36,8 @@ class TodoForm extends React.Component {
           name='item' 
           value={this.state.task} 
           className='field'
-          placeholder='Task' />
+          placeholder='Task' 
+          />
           <button className='field'>Add to List</button>
         </form>
         <p className='directions'>Click task to check completed</p>
