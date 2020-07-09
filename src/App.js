@@ -15,7 +15,8 @@ class App extends React.Component {
     super();
     this.state = {
       // add my state object
-      todo: data
+      todo: data,
+      
     };
   };
 
@@ -30,6 +31,7 @@ class App extends React.Component {
         }
       ]
     })
+    
   }
   
   render() {
@@ -38,7 +40,7 @@ class App extends React.Component {
       <div clasName='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>
         <TodoForm addItem={this.addItem}/>
-        <TodoList />
+        <TodoList todo={this.state.todo}/>
 
         <button className='clearButton'>Clear Completed Task</button>
         <button className='clearButton'>Restore List</button>

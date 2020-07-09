@@ -38,7 +38,7 @@ class TodoForm extends React.Component {
           placeholder='Task' />
           <button className='field'>Add to List</button>
         </form>
-
+        <p className='directions'>Click task to check completed</p>
       </div>
     );
   }
