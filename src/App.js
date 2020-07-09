@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import './components/Todo.css';
 
 const data = [
   {
@@ -31,7 +32,20 @@ class App extends React.Component {
         }
       ]
     })
-    
+  }
+
+  toggleCompleted = (itemID) => {
+    this.setState({
+      todo: this.state.todo.map(item => {
+        if (item.id === itemID) {
+          return {
+            ...item,
+            completed: !item.completed //which sets completed to true
+          }
+        }
+        return item;
+      })
+    })
   }
   
   render() {
@@ -40,7 +54,11 @@ class App extends React.Component {
       <div clasName='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>
         <TodoForm addItem={this.addItem}/>
-        <TodoList todo={this.state.todo}/>
+        <TodoList 
+        todo={this.state.todo}
+        toggleCompleted={this.togleCompleted}
+        clearCompleted={this.clearCompleted}
+        />
 
         <button className='clearButton'>Clear Completed Task</button>
         <button className='clearButton'>Restore List</button>
