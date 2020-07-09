@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
-import TodoList from './ components/TodoList';
+import TodoList from './components/TodoList';
 
 const data = [
   {
@@ -37,4 +37,3 @@ class App extends React.Component {
 }
 
 export default App;
-``
