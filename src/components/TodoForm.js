@@ -2,8 +2,8 @@ import React from 'react';
 
 
 class TodoForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       task: ''
     }
@@ -26,7 +26,7 @@ class TodoForm extends React.Component {
   }
 
   render() {
-    console.log('rendering form')
+    console.log('MS: Rendering: from TodoForm.js')
     return(
       <div className='form'>
         <form onSubmit={this.handleSubmit}>

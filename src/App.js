@@ -5,13 +5,14 @@ import './components/Todo.css';
 
 const data = [
   {
-    task: 'Make todo list',
+    task: 'Make Todo',
     id: 1234,
     completed: false
   }
 ]
 class App extends React.Component {
   constructor() {
+    console.log('MS: Constructor Invoked: from App.js')
     super();
     this.state = {
       // add my state object
@@ -58,12 +59,12 @@ class App extends React.Component {
   }
 
   clearCompleted = (itemID) => {
-    this.state({
+    this.setState({
       todo: this.state.todo.filter(item => {
         return !item.completed
       })
     })
-    this.state({
+    this.setState({
       lastTodo: this.state.todo.filter(item => {
         return !item.completed
       })
@@ -76,7 +77,7 @@ class App extends React.Component {
   }
   
   render() {
-    console.log('rendering...')
+    console.log('MS: Rendering: from App.js')
     return (
       <div className='App'>
         <h1 className='title'>Welcome to your Todo App!</h1>        
@@ -89,7 +90,7 @@ class App extends React.Component {
 
         <button className='clearButton' onClick={this.clearCompleted}>
           Clear Completed Task
-        </button>    
+        </button>  
 
         <button className='clearButton' onClick={this.handleRestoreSubmit}>
           Restore List
