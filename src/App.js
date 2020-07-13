@@ -1,16 +1,104 @@
 import React from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import './components/Todo.css';
 
+const data = [
+  {
+    task: 'Make Todo',
+    id: 1234,
+    completed: false
+  }
+]
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+  constructor() {
+    console.log('MS: Constructor Invoked: from App.js')
+    super();
+    this.state = {
+      // add my state object
+      todo: data,
+      lastTodo: data
+    };
+  };
+
+  addItem = task => {
+    this.setState({
+      todo: [
+        ...this.state.todo,
+        {
+          task: task,
+          id: Date.now(),
+          completed: false
+        }
+      ]
+    })
+    this.setState({
+      lastTodo: [
+        ...this.state.todo,
+        {
+          task: task,
+          id: Date.now(),
+          completed: false
+        }
+      ]
+    })
+  }
+
+  toggleCompleted = (itemID) => {
+    this.setState({
+      todo: this.state.todo.map(item => {
+        if (item.id === itemID) {
+          return {
+            ...item,
+            completed: !item.completed //sets completed to true
+          }
+        }
+        return item;
+      })
+    })
+  }
+
+  clearCompleted = (itemID) => {
+    this.setState({
+      todo: this.state.todo.filter(item => {
+        return !item.completed
+      })
+    })
+    this.setState({
+      lastTodo: this.state.todo.filter(item => {
+        return !item.completed
+      })
+    })
+  }
+
+  handleRestoreSubmit = e => {
+    e.preventDefault();
+    this.setState({ todo: this.state.lastTodo})
+  }
+  
   render() {
+    console.log('MS: Rendering: from App.js')
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <div className='App'>
+        <h1 className='title'>Welcome to your Todo App!</h1>        
+        <TodoForm addItem={this.addItem}/> 
+        <TodoList
+        todo={this.state.todo}
+        toggleCompleted={this.toggleCompleted}
+        clearCompleted={this.clearCompleted}
+        />   
+
+        <button className='clearButton' onClick={this.clearCompleted}>
+          Clear Completed Task
+        </button>  
+
+        <button className='clearButton' onClick={this.handleRestoreSubmit}>
+          Restore List
+        </button>
       </div>
     );
   }
 }
+
 
 export default App;
