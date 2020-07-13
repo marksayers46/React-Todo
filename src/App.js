@@ -50,7 +50,7 @@ class App extends React.Component {
         if (item.id === itemID) {
           return {
             ...item,
-            completed: !item.completed //which sets completed to true
+            completed: !item.completed //sets completed to true
           }
         }
         return item;
